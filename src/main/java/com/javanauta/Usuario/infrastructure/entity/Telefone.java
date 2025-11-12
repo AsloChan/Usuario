@@ -1,10 +1,7 @@
 package com.javanauta.Usuario.infrastructure.entity;
 
 import jakarta.persistence.*;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.AllArgsConstructor;
+import lombok.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -14,7 +11,7 @@ import jakarta.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table( name = "telefone")
-
+@Builder
 public class Telefone {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
