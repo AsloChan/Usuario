@@ -1,7 +1,6 @@
 package com.javanauta.Usuario.infrastructure.entity;
 
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
