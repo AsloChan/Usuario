@@ -1,5 +1,6 @@
 package com.javanauta.Usuario.infrastructure.entity;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,7 +16,7 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column (name = "rua")
+    @Column(name = "rua")
     private String rua;
     @Column (name = "numero")
     private Long numero;
