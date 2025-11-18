@@ -14,7 +14,7 @@ import java.util.Date;
 public class JwtUtil {
 
     // Chave secreta usada para assinar e verificar tokens JWT
-    private final String secretKey = "sua-chave-secreta-super-segura-que-deve-ser-bem-longa";
+    private static final String secretKey = "sua-chave-secreta-super-segura-que-deve-ser-bem-longa";
 
 
 
@@ -29,7 +29,7 @@ public class JwtUtil {
     }
 
     // Extrai as claims do token JWT (informações adicionais do token)
-    public Claims extractClaims(String token) {
+    public static Claims extractClaims(String token) {
         return Jwts.parser()
                 .setSigningKey(Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8))) // Define a chave secreta para validar a assinatura do token
                 .build()
@@ -37,8 +37,8 @@ public class JwtUtil {
                 .getBody(); // Retorna o corpo das claims
     }
 
-    // Extrai o nome de usuário do token JWT
-    public String extractUsername(String token) {
+    // Extrai o email de usuário do token JWT
+    public static String extrairEmailToken(String token) {
         // Obtém o assunto (nome de usuário) das claims do token
         return extractClaims(token).getSubject();
     }
@@ -52,7 +52,7 @@ public class JwtUtil {
     // Valida o token JWT verificando o nome de usuário e se o token não está expirado
     public boolean validateToken(String token, String username) {
         // Extrai o nome de usuário do token
-        final String extractedUsername = extractUsername(token);
+        final String extractedUsername = extrairEmailToken(token);
         // Verifica se o nome de usuário do token corresponde ao fornecido e se o token não está expirado
         return (extractedUsername.equals(username) && !isTokenExpired(token));
     }
